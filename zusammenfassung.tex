@@ -21,11 +21,15 @@
 \begin{document}
 \maketitle
 
+
+
 \textbf{Definition 2.8} Ein randomisierter Online-Algorithmus $A$ für ein Minimierungsproblem $\Pi$ erreicht einen kompetitiven Faktor von $r \ge 1$, wenn es eine Konstante $r \in \mathbb{R}$ gibt, sodass
 $$E[w_A(\sigma)] \leq r \cdot \textrm{OPT}(\sigma) + \tau$$
 für alle Instanzen $\sigma \in I_\Pi$ gilt. Gilt diese Ungleichung sogar für $\tau = 0$, so ist $A$ strikt $r$-kompetitiv.
 
 Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erwartungswert der Kosten nutzen, da diese vom Zufall abhängen.
+
+
 
 \textbf{Theorem 2.9} Es sei $A$ ein Online-Algorithmus und $r \geq 1$. Gibt es eine Konstante $b \geq 0$ und eine Potentialfunktion $\Phi$, die die folgenden drei Bedingungen für jede Eingabe $\sigma$ erfüllt, so erreicht Algorithmus $A$ einen kompetitiven Faktor von $r$.
 \begin{enumerate}
@@ -38,5 +42,26 @@ Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erw
 \end{enumerate}
 
 \textit{Beweisidee:} Da der Startkontostand bzw. das Überziehen des Kontos durch eine Konstante beschränkt sind, kann dies durch das $\tau$ in der Ungleichung des kompetitiven Faktors ausgeglichen werden.
+
+
+
+\textbf{Theorem 2.10} Der Algorithmus RANDOM ist $k$-kompetitiv.
+
+\textit{Beweisidee:} To be done...
+
+
+
+\textbf{Lemma 2.11} Es sei $X$ eine geometrisch verteilte Zufallsvariable mit Parameter $p$ und es sei $n \in \mathbb{N}$. Für die Zufallsvariable $Y = min\{X,n\}$ gilt $$E[Y] = \frac{1-(1-p)^n}{p}$$
+
+\textit{Vermutlich ist dieses Lemma für die Prüfung nicht relevant, da es sich nur um Rechnerei handelt.}
+
+
+
+\textbf{Theorem 2.12} Der kompetitive Faktor von RANDOM beträgt mindestens $k$.
+
+\textit{Beweisidee:} Wir betrachten die Sequenz $$\sigma = \left((a_1,...,a_k),(b_1,a_2,...,a_k)^l,(b_2,a_2,...,a_k)^l,...,(b_m,a_2,...,a_k)^l\right)$$.
+
+Bei der Anzahl der Seitenfehler in einer Teilsequenz $(b_i,a_2,...,a_k)^l$ handelt es sich hier um eine bei $l$ abgeschnittene geometrische Zufallsvariable mit Parameter $1/k$. Somit können wir Lemma 2.11 anwenden...
+
 
 \end{document}
