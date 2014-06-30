@@ -60,6 +60,19 @@ Beweis: Konstruiere Eingabe für bel. online Algo A: $\sigma_{1}$, $\sigma_{2}$,
 Für $\sigma_{k + 1}$, ..., $\sigma_{k + l}$ gilt: Es kommt immer die Seite, die A vorher aus dem Cach geschmissen hat. Also macht A hier k + l Seitenfehler; LFD hat nur $\omega_{LFD}$($\sigma$) $\le$ k + 1 + $\tfrac{l}{k}$ Seitenfehler. \\
 Da LFD mind. so viele Fehler macht wie OPT gilt: $\omega_{A}$($\sigma$) = k + l $>$ r $\cdot$ ( k + 1 + $\tfrac{l}{k}$) + $\tau$ $\ge$ r $\cdot$ $\omega_{LFO}$($\sigma$) + $\tau$ \\
  $\Rightarrow$  $\omega_{A}$($\sigma$) $>$ r $\cdot$ OPT($\sigma$) $\cot$ r
+
+\section*{Deterministische Algorithmen für das Paging - Problem:}
+
+ \begin{tabular}{| l | l |}
+ \hline
+  LRU (least-recently-used) 	& strikt k - kompetitiv da Markierungsalgorithmus \\ \hline
+  FWF (flush-when-full)  		& strikt k - kompetitiv da Markierungsalgorithmus \\ \hline
+  FIFO (first-in-first-out)  	& kein MArkierungsalgorithmus, dennoch k - kompetitiv \\ \hline
+  LFU (least-frequently-used)   & nicht kompetitiv\\ \hline
+  LIFO (last-in-first-out)  	& nicht kompetitiv\\ \hline
+  LFD (longest-forward-distance)& optimaler Offline - Algorithmus \\ \hline
+ \end{tabular}
+
  
 
 \end{document}
