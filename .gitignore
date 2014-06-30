@@ -75,3 +75,6 @@ $RECYCLE.BIN/
 *.vrb
 *.xdy
 *.tdo
+
+### Custom ###
+*.pdf
