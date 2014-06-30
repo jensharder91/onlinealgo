@@ -82,6 +82,20 @@ Da LFD mind. so viele Fehler macht wie OPT gilt: $\omega_{A}$($\sigma$) = k + l 
 
 
 
+\section*{Deterministische Algorithmen für das Paging - Problem:}
+
+\begin{tabular}{| l | l |}
+\hline
+LRU (least-recently-used)   & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
+FWF (flush-when-full)     & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
+FIFO (first-in-first-out)   & kein Markierungsalgorithmus, dennoch $k$-kompetitiv \\ \hline
+LFU (least-frequently-used)   & nicht kompetitiv\\ \hline
+LIFO (last-in-first-out)    & nicht kompetitiv\\ \hline
+LFD (longest-forward-distance)& optimaler Offline-Algorithmus \\ \hline
+\end{tabular}
+
+
+
 \section*{!!! Achtung! Hier fehlt noch was !!!!}
 
 
@@ -125,6 +139,7 @@ Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erw
 \textit{Beweisidee:} Wir betrachten die Sequenz $$\sigma = \left((a_1,...,a_k),(b_1,a_2,...,a_k)^l,(b_2,a_2,...,a_k)^l,...,(b_m,a_2,...,a_k)^l\right)$$.
 
 Bei der Anzahl der Seitenfehler in einer Teilsequenz $(b_i,a_2,...,a_k)^l$ handelt es sich hier um eine bei $l$ abgeschnittene geometrische Zufallsvariable mit Parameter $1/k$. Somit können wir Lemma 2.11 anwenden...
+
 
 
 \end{document}
