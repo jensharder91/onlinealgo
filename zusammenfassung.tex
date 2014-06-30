@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{report}
 
 \usepackage{geometry}
 \geometry{margin=3cm,top=2cm,bottom=3cm}
@@ -22,25 +22,28 @@
 \begin{document}
 \maketitle
 
+\chapter{Einleitung}
 
+\textbf{Definition 1.1.} Kompetitiver Faktor
 
-\section*{Definition 1.1 Kompetitiver Faktor}
+\chapter{Paging}
 
+\section{Deterministische Algorithmen}
 
-
-\section*{Markierungsalgorithmen:}
+\subsection{Markierungsalgorithmen:}
 $\sigma = (\overbrace{1, 2, 4, 2, 1}^{Phase 1},\overbrace{3, 5, 2, 3, 5}^{Phase 2},\overbrace{1, 2, 3}^{Phase 3},\overbrace{4}^{Phase 4})$
 
 
 
-\section*{Theorem 2.1: LRU und FWF sind Markierungsalgorithmen}
-Beweis: Widerspruchsbeweis: In der Phase müsste auf $k + 1$ verschiedene Seiten zugegriffen werden, damit eine markierte Seite verdrängt wird. (Widerspruch!)
+\textbf{Theorem 2.1.} LRU und FWF sind Markierungsalgorithmen
+
+\textit{Beweis:} Widerspruchsbeweis: In der Phase müsste auf $k + 1$ verschiedene Seiten zugegriffen werden, damit eine markierte Seite verdrängt wird. (Widerspruch!)
 
 
 
-%\section*{Theorem 2.2: Jeder Markierungsalgorithmus ist strikt k-kompetitiv}
+\textbf{Theorem 2.2.} Jeder Markierungsalgorithmus ist strikt k-kompetitiv
 
-Beweis:
+\textit{Beweis:}
 \begin{enumerate}
 \item Fall: es gibt nur eine Phase: keine Seite wird jemals verdrängt: Markierungsalgorithmus ist optimal
 \item Fall: es gibt mind. 2 Phasen: Kosten $\le l \cdot k$ (Anzahl Phasen mal Anzahl versch. Seiten / Phase).
@@ -57,12 +60,12 @@ Also: $\omega_{A}(\sigma) \le l \cdot k \le (k + l - 2) \cdot k \le \textrm{OPT}
 
 
 
-\section*{Korollar 2.3: LRU und FWF sind strikt k-kompetitiv}
+\textbf{Korollar 2.3.} LRU und FWF sind strikt k-kompetitiv
 
 
 
-\section*{Theorem 2.4: LFU und LIFO sind nicht kompetitiv}
-Beweis: Gebe Gegenbeispiel an:
+\textbf{Theorem 2.4.} LFU und LIFO sind nicht kompetitiv
+\textit{Beweis:} Gebe Gegenbeispiel an:
 
 $\sigma = \left(1^l, 1^l, ..., (k-1)^l, (k, k+1)^l\right)$\\
 $\Rightarrow k - 1 + 2(l - 1)$ Seitenfehler
@@ -74,15 +77,46 @@ $\Rightarrow k - 1 + 2(l - 1)$ Seitenfehler
 
 
 
-\section*{Theorem 2.5: Es gibt für kein $r < k$ einen deterministischen $r$-kompetitiven online Algorithmus für das Paging-Problem}
-Beweis: Konstruiere Eingabe für bel. online Algo A: $\sigma_{1}$, $\sigma_{2}$, ..., $\sigma_{k}$: k verschiedene Seitem. Also hat sowohl A als auch opt. offline Algo k Seitenfehler.\\
+\textbf{Theorem 2.5.} Es gibt für kein $r < k$ einen deterministischen $r$-kompetitiven online Algorithmus für das Paging-Problem
+
+\textit{Beweis:} Konstruiere Eingabe für bel. online Algo A: $\sigma_{1}$, $\sigma_{2}$, ..., $\sigma_{k}$: k verschiedene Seitem. Also hat sowohl A als auch opt. offline Algo k Seitenfehler.\\
 Für $\sigma_{k + 1}$, ..., $\sigma_{k + l}$ gilt: Es kommt immer die Seite, die A vorher aus dem Cach geschmissen hat. Also macht A hier k + l Seitenfehler; LFD hat nur $\omega_{LFD}$($\sigma$) $\le$ k + 1 + $\tfrac{l}{k}$ Seitenfehler. \\
 Da LFD mind. so viele Fehler macht wie OPT gilt: $\omega_{A}$($\sigma$) = k + l $>$ r $\cdot$ ( k + 1 + $\tfrac{l}{k}$) + $\tau$ $\ge$ r $\cdot$ $\omega_{LFO}$($\sigma$) + $\tau$ \\
  $\Rightarrow$  $\omega_{A}$($\sigma$) $>$ r $\cdot$ OPT($\sigma$) $\cot$ r
 
 
+\subsection{Untere Schranken}
 
-\section*{Deterministische Algorithmen für das Paging - Problem:}
+
+\subsection{Optimaler Offline-Algorithmus}
+
+\textbf{Theorem 2.6.} LFT ist ein opt. offline Algorithmus für das Paging-Problem
+
+\textit{Beweis mit Lemma 2.7}:
+
+\textbf{Lemma 2.7.} Sei A ein bel. offline Algo, der sich auf Eingabe $\sigma$ anders Verhält als LFD uns sei $\sigma_{t}$ der erste Seitenzugriff, bei dem sich A und LFD unterscheiden. Dann ex. Algo B mit folgenden Eingenschaften:
+\begin{enumerate}
+\item B verhält sich auf $\sigma_{1}, ..., \sigma_{t - 1}$ genau wie A
+\item Bei $\sigma_{t}$ verdrängt B die Seite, bei der der mächste Zugriff am weitesten weg ist
+\item B verursacht auf $\sigma$ höchstens so viele Fehler wie Algo A
+\end{enumerate}
+
+\textit{Beweis Theorem 2.6:}\\
+Man verwendet (höchstens n - mal) Lemma 2.7 so oft hintereinander an, bis sich Algo B genauso verhält wie LFD. Da dieser dann (laut Lemma) höchstens so viele Fehler macht wie OPT ist LFD optimal.\\
+$\omega_{LFD}(\sigma) = \omega_{A_{n}}(\sigma) \le \omega_{A_{n-1}}(\sigma) \le ... \le \omega_{A_{1}}(\sigma) \le \omega_{OPT}(\sigma)$ \\
+
+\textit{Beweis Lemma 2.7:}\\
+Wir konstruieren nun Algo B: \\
+Auf der Sequent $\sigma_{1}, ..., \sigma_{t-1}$ verhalten sich die Algorithmen A und B gleich. bei $\sigma_{t}$ machen beide einen Seitenfehler, verdrängen aber unterschieldiche Seiten aus dem Cach.
+\\
+\\
+\\
+TODO: !!!Beweis Lemma 2.7!!!
+\\
+\\
+\\
+
+\subsection{Zusammenfassung der Ergebnisse}
 
 \begin{tabular}{| l | l |}
 \hline
@@ -96,8 +130,7 @@ LFD (longest-forward-distance)& optimaler Offline-Algorithmus \\ \hline
 
 
 
-\section*{!!! Achtung! Hier fehlt noch was !!!!}
-
+\section{Randomisierte Algorithmen}
 
 
 \textbf{Definition 2.8} Ein randomisierter Online-Algorithmus $A$ für ein Minimierungsproblem $\Pi$ erreicht einen kompetitiven Faktor von $r \ge 1$, wenn es eine Konstante $r \in \mathbb{R}$ gibt, sodass
@@ -106,7 +139,7 @@ für alle Instanzen $\sigma \in I_\Pi$ gilt. Gilt diese Ungleichung sogar für $
 
 Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erwartungswert der Kosten nutzen, da diese vom Zufall abhängen.
 
-
+\subsection{Potentialfunktionen}
 
 \textbf{Theorem 2.9} Es sei $A$ ein Online-Algorithmus und $r \geq 1$. Gibt es eine Konstante $b \geq 0$ und eine Potentialfunktion $\Phi$, die die folgenden drei Bedingungen für jede Eingabe $\sigma$ erfüllt, so erreicht Algorithmus $A$ einen kompetitiven Faktor von $r$.
 \begin{enumerate}
@@ -120,6 +153,8 @@ Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erw
 
 \textit{Beweisidee:} Da der Startkontostand bzw. das Überziehen des Kontos durch eine Konstante beschränkt sind, kann dies durch das $\tau$ in der Ungleichung des kompetitiven Faktors ausgeglichen werden.
 
+
+\subsection{Analyse von RANDOM}
 
 
 \textbf{Theorem 2.10} Der Algorithmus RANDOM ist $k$-kompetitiv.
@@ -140,6 +175,12 @@ Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erw
 
 Bei der Anzahl der Seitenfehler in einer Teilsequenz $(b_i,a_2,...,a_k)^l$ handelt es sich hier um eine bei $l$ abgeschnittene geometrische Zufallsvariable mit Parameter $1/k$. Somit können wir Lemma 2.11 anwenden...
 
+
+\subsection{Analyse von MARK}
+
+\subsection{Untere Schranke für randomisierte Online-Algorithmen}
+
+\chapter{Das $k$-Server-Problem}
 
 
 \end{document}
