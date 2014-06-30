@@ -9,8 +9,6 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\renewcommand{\labelenumi}{(\alph{enumi})}
-
 \setlength{\parskip}{\baselineskip}
 \setlength{\parindent}{0pt}
 
@@ -25,8 +23,20 @@
 
 \textbf{Definition 2.8} Ein randomisierter Online-Algorithmus $A$ für ein Minimierungsproblem $\Pi$ erreicht einen kompetitiven Faktor von $r \ge 1$, wenn es eine Konstante $r \in \mathbb{R}$ gibt, sodass
 $$E[w_A(\sigma)] \leq r \cdot \textrm{OPT}(\sigma) + \tau$$
-für alle INstanzen $\sigma \in I_\Pi$ gilt. Gilt diese Ungleichung sogar für $\tau = 0$, so ist $A$ strikt $r$-kompetitiv.
+für alle Instanzen $\sigma \in I_\Pi$ gilt. Gilt diese Ungleichung sogar für $\tau = 0$, so ist $A$ strikt $r$-kompetitiv.
 
 Der Unterschied zu Definition 1.1 besteht lediglich darin, dass wir hier den Erwartungswert der Kosten nutzen, da diese vom Zufall abhängen.
+
+\textbf{Theorem 2.9} Es sei $A$ ein Online-Algorithmus und $r \geq 1$. Gibt es eine Konstante $b \geq 0$ und eine Potentialfunktion $\Phi$, die die folgenden drei Bedingungen für jede Eingabe $\sigma$ erfüllt, so erreicht Algorithmus $A$ einen kompetitiven Faktor von $r$.
+\begin{enumerate}
+\item Für jedes $i \geq 1$ gilt $E[a_i] \leq r \cdot \textrm{OPT}_i$.\\
+(Die amortisierten Kosten sind höchstens $r$ mal größer als die Kosten von OPT.)
+\item Es gilt $E[\Phi_0] \leq b$.\\
+(Der Kontostand ist zu Beginn durch eine Konstante nach oben beschränkt.)
+\item Für jedes $i \geq 1$ gilt $E[\Phi_i] \geq -b$.\\
+(Zu keinem Zeitpunkt wird das Konto stärker als eine Konstante überzogen.)
+\end{enumerate}
+
+\textit{Beweisidee:} Da der Startkontostand bzw. das Überziehen des Kontos durch eine Konstante beschränkt sind, kann dies durch das $\tau$ in der Ungleichung des kompetitiven Faktors ausgeglichen werden.
 
 \end{document}
