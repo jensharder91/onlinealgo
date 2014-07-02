@@ -150,4 +150,12 @@ Bei der Anzahl der Seitenfehler in einer Teilsequenz $(b_i,a_2,...,a_k)^l$ hande
 
 \subsection{Analyse von MARK}
 
+\textbf{Theorem 2.13} Der Algorithmus MARK ist $2H_k$-kompetitiv.
+
+\textit{Beweisidee.} In einer Phase passieren mindestens so viele Seitenfehler, wie es neue Seiten in dieser Phase gibt. Alte Seiten können auch Seitenfehler verursachen, müssen dies aber nicht. Die Wahrscheinlichkeit, dass eine alte Seite einen Seitenfehler verursacht nimmt zu, wenn die Seite später in der Phase angefragt wird, da der Aufruf von neuen Seiten zuvor diese alte Seite aus dem Cache verdrängt haben kann.
+
 \subsection{Untere Schranke für randomisierte Online-Algorithmen}
+
+\textbf{Theorem 2.14} Es existiert kein randomisierter Online-Algorithmus für das Paging-Problem mit einem kleineren kompetitiven Faktor als $H_k$.
+
+\textit{Beweis.} Fehlt noch!
