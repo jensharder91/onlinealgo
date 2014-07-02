@@ -24,6 +24,20 @@ Bisher konnte diese Vermutung noch nicht bewiesen werden. Daher ist sie wohl nic
 
 \section{Untere Schranke für deterministische Algorithmen}
 
+\textbf{Theorem 3.3.} Es sei $\mathcal{M} = (M,d)$ ein beliebiger metrischer Raum mit $|M| \geq k+1$. Dann gibt es für kein $r < k$ einen $r$-kompetitiven Online-Algorithmus für das $k$-Server-Problem auf $\mathcal{M}$.
+
+\textit{Beweis.} Sei $B \subseteq M$ eine beliebige Teilmenge von $M$ mit $k+1$ Elementen und $A$ ein beliebiger fauler deterministischer Algorithmus. Da es einen Punkt mehr als Server gibt, ist immer genau ein Punkt nicht von einem Server besetzt. Deshalb wählen wir die Sequenz so, dass die Anfrage immer genau dort auftritt, wo kein Server steht.
+
+
+\textbf{Lemma 3.4.} Es gilt $$\omega_A(\sigma) \geq \sum_{i=1}^{n-1}d(\sigma_i,\sigma_{i+1})$$
+
+\textit{Beweis.} Wir haben $\sigma$ so gewählt, dass der Algorithmus $A$ bei jeder anfrage einen Server verschieben muss. Da sich der Server, der Anfrage $\sigma_i$ bearbeitet, zuvor bei $\sigma_{i+1}$ befunden hat (bzw. da wir $\sigma_{i+1}$ so gewählt haben), entstehen bei diesem Vorgang Kosten in Höhe von $d(\sigma_{i+1},\sigma_i)$. Deshalb können die Kosten insgesamt durch $$\omega_A(\sigma) \geq \sum_{i=1}^{n-1}d(\sigma_{i+1},\sigma_i) = \sum_{i=1}^{n-1}d(\sigma_i,\sigma_{i+1})$$ nach unten abschätzen.
+
+
+\textbf{Lemma 3.5.} Es gilt $$\textrm{OPT}(\sigma) \leq \frac{1}{k}\sum_{i=1}^{n-1}d(\sigma_i,\sigma_{i+1})$$
+
+\textit{Beweis.} Fehlt noch!
+
 
 \section{Das $k$-Server-Problem auf Linien und Bäumen}
 
