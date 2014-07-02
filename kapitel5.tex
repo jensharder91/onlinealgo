@@ -28,11 +28,11 @@ $\varphi = \tfrac{M}{m}$\\
 
 \textbf{Theorem 5.3.} Der Algorithmus EXPO ist strikt $(c(\varphi)log\varphi)$-kompetitiv. Dabei ist c eine Funktion, ddie für große $\varphi$ gegen 1 konvergiert und für die $c(\varphi) \le 2$ für alle $\varphi = 2^k$ gilt.
 
-\textit{Beweis:} 
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \textbf{Theorem 5.4.} Der Algorithmus $EXPO_{q}$ ist strikt $\tfrac{2}{q\lfloor log\varphi \rfloor)}$-kompetitiv.
 
-\textit{Beweis:} 
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \subsection{Optimaler Onlin-Algorithmus für One-Way-Trading}
 
@@ -42,13 +42,13 @@ $\varphi = \tfrac{M}{m}$\\
 
 \textbf{Theorem 5.5.} Gibt es einen strikt r-kompetitiven Algorithmus für One-Way-Trading, so ist auch der Algorithmus Threat(r) strikt r-kompetitiv. Insbesondere gibt Threat(r) dann auf keiner Eingabe eine Fehlermeldung aus.
 
-\textit{Beweis:} 
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \textbf{Korollar 5.6.} Es sei $\sigma$ eine beliebige Eingabe der Länge n für One-Way-Trading. Gibt es einen Algorithmus, der auf der Eingabe $\sigma^{i}$ mit i $\in$ {1, ..., n} strikt r-kompetitiv ist, so ist auch der Algorithmus Threat(r) strikt r-kompetitiv auf $\sigma$ und gibt insbesondere keine Fehlermeldung auf dieser Eingabe aus.
 
 \textbf{Korollar 5.7.} In dem Szenario, dass das Intervall [m, M] und die Eingabenlänge n bekannt sind, ist Threat($r_{n}^{*}$(m, M)) ein optimaler Online-Algorithmus.
 
-\textit{Beweis:} 
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \textbf{Korollar 5.8.} In dem Szenario, dass nur das Intervall [m, M] bekannt ist, ist der Algorithmus Threat($r_{\infty}^{*}$(m, M)) ein optimaler Online-Alforithmus. Er erreicht einen strikt kompetitiven Faktor von $\Theta(log \varphi)$. 
 
@@ -91,4 +91,20 @@ Diese Sequenz kann bel oft wiederholt werden, sodass die Kosten nicht in der Kon
 
 \subsection{Algorithmen mit fester Lagerfunktion}
 
+\textit{Lagerfunktion} 
+
+\textbf{Theorem 5.13.} Jeder Algorithmus $A_{f}$ mit einer festen Lagerfunktion f: [1, $\varphi$] $\to$ [0, 1] ist nicht besser als $\sqrt{\varphi}$-kompetitiv.
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
 \subsection{Ein optimaler Online-Algorithmus}
+
+\textit{Definiere Fuktion:} !!!!!TODO!!!!!
+ 
+\textbf{Lemma 5.14.} Die Kosten eines optimalen Offline-Algorithmus auf der Eingabe $\sigma$ entwprechen der Summe $\sum_{i=1}^{n} C_{i}$.
+
+\textit{Beweisidee:} Man müsste induktiv nachweisen, dass $A_{y}^{i} = (\sum_{j=18}^{i} C_{j} ) + \int_{0}^{\varphi} max{h_{i}(x) + y - 1, 0} dx $ für jedes i und jedes y $\in$ [0, 1] die Kosten eines optimalen Offline-Algorithmus angibt, der die Anfrage $\sigma_{1}, ... \sigma_{i}$ abarbeitet und danach den Lagerbestand y hat.
+
+\textbf{Theorem 5.15.} Der Algorithmus Threat erreicht einen kompetitiven Faktor vonr $r^{*}$ für das Economical-Caching-Problem
+
+\textit{Beweis:} Der Beweis wird nicht besprochen.
