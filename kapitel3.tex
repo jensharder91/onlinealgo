@@ -5,7 +5,15 @@
 
 \subsection{Der Greedy-Algorithmus}
 
+Der Greedy-Algorithmus (bewege immer den Server, der am nähesten ist) ist nicht kompetitiv. Es reichen hierzu 2 Server und 3 Anfragepunkte ($a$,$b$,$c$) auf der Linie, wobei der Abstand zwischen $a$ und $b$ kleiner als der Abstand $bc$ bzw $ac$ sein muss. Die Eingabe $\sigma = (c,(a,b)^l)$ erzeugt für den Greedy-Algorithmus mit $l$ wachsende Kosten, wobei die optimalen Kosten konstant sind.
+
 \subsection{Die $k$-Server-Vermutung}
+
+\textbf{Vermutung 3.1} ($k$-Server-Vermutung). Für jeden metrischen Raum gibt es einen deterministischen $k$-kompetitiven Online-Algorithmus für das $k$-Server-Problem.
+
+\textit{Vermutlich nicht wirklich relevant.} Bis heute wurde gezeigt, dass es für keinen metrischen Raum mit mindestens $k+1$ Punkten einen deterministischen Online-Algorithmus gibt, der $r$-kompetitiv für ein $r < k$ ist. Es ist aber bekannt, dass es einen deterministischen Online-Algorithmus gibt, der $(2k-1)$-kompetitiv ist.
+
+Die $k$-Server-Vermutung konnte bisher noch nicht bewiesen oder widerlegt werden.
 
 \subsection{Optimale Offline-Algorithmen}
 
