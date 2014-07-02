@@ -46,17 +46,48 @@ $\varphi = \tfrac{M}{m}$\\
 
 \textbf{Korollar 5.6.} Es sei $\sigma$ eine beliebige Eingabe der Länge n für One-Way-Trading. Gibt es einen Algorithmus, der auf der Eingabe $\sigma^{i}$ mit i $\in$ {1, ..., n} strikt r-kompetitiv ist, so ist auch der Algorithmus Threat(r) strikt r-kompetitiv auf $\sigma$ und gibt insbesondere keine Fehlermeldung auf dieser Eingabe aus.
 
-\textbf{Korollar 5.7.} In dem Szenario, dass das Intervall [m, M] und die Eingabenlänge n bekannt sind, ist Threat($r*_{n}$(m, M)) ein optimaler Online-Algorithmus.
+\textbf{Korollar 5.7.} In dem Szenario, dass das Intervall [m, M] und die Eingabenlänge n bekannt sind, ist Threat($r_{n}^{*}$(m, M)) ein optimaler Online-Algorithmus.
 
 \textit{Beweis:} 
 
-\textbf{Korollar 5.8.} In dem Szenario, dass nur das Intervall [m, M] bekannt ist, ist der Algorithmus Threat($r*_{\infty}$(m, M)) ein optimaler Online-Alforithmus. Er erreicht einen strikt kompetitiven Faktor von $\Theta(log \varphi)$. 
+\textbf{Korollar 5.8.} In dem Szenario, dass nur das Intervall [m, M] bekannt ist, ist der Algorithmus Threat($r_{\infty}^{*}$(m, M)) ein optimaler Online-Alforithmus. Er erreicht einen strikt kompetitiven Faktor von $\Theta(log \varphi)$. 
 
 \section{Economical Caching}
 
+Die Eingabe $\sigma = (\sigma_{1}, ..., \sigma_{n})$ beim Economical Caching besteht aus einem Preis $p_{i} \in [1, \varphi]$ und einem Verbrauch $v_{i} \ge 0$.\\
+Der Lagerbestand ist definiert als: $L_{i}^{A} = L_{i-1}^{A} - v_{i} + x_{i}$ (neuer Lagerbestand = alter Lagerbestand - Verbrauch + Kauf).\\
+$x_{i} \in [max{0, v_{i}-L_{i-1}^{A}}, 1-L_{i-1}^{A}+v_{i}]$ \\
+Die Kosten von Algo A sind: $C_{A} = \sum_{i = 1}^{n} p_{i}x_{i}$
+
 \subsection{Ein Reservationspreisalgorithmus}
 
+Der Reservationspreisalgorithmus kauft bei einem Preis unter $\sqrt{\varphi}$ so viel wie möglich und bei einem Preis über $\sqrt{\varphi}$ so wenig wie möglich: \\
+%$\lbrace{x_{i} = v_{i} + (1 - L_{i-1}^{RPA})  , falls  p_{i} \le \sqrt{\varphi}}   {max{0, v_{i} - L_{i-1}^{RPA}}  , falls  p_{i} > \sqrt{\varphi}}$
+
+
+\textbf{Theorem 5.9.} Der Algorithmus RPA ist $\sqrt{\varphi}$-kompetitiv für das Economical-Caching-Problem
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
+RPA kann nicht besser als $\sqrt{\varphi}$ werden: \\
+$\sigma^{'} = \left(\begin{array}{c} \sqrt{\varphi} \\ 0 \end{array}\right), \left(\begin{array}{c} 1 \\ 0 \end{array}\right), \left(\begin{array}{c} \varphi \\ 1 \end{array}\right)$ \\
+Diese Sequenz kann bel oft wiederholt werden, sodass die Kosten nicht in der Konstenten $\tau$ versteckt werden können
+
 \subsection{Untere Schranken}
+
+\textbf{Theorem 5.10.} Es gibt keinen deterministischen oder randomisierten Online-Algorithmus für das Economical-Chaching-Problem, der einen kompetitiven Faktor kleiner als $\tfrac{\sqrt{\varphi} +1}{2}$ erreicht.
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
+\textit{lambertsche W-Funktion} ist die Umkehrfunktion von $f(x) = x \cdot e^{x}$
+
+\textbf{Theorem 5.11.} Für alle $x \in [-\tfrac{1}{e}, 0)$ gilt ln(-W(x)) = ln(-x) - W(x)
+
+\textit{Beweis:} Rechnung... (wahrscheinlich nicht relevant)
+
+\textbf{Theorem 5.12.} Es gibt keinen deterministischen oder randomisierten Online-Algorithmus für das Economical-Caching-Problem, der einen kompetitiven Faktor kleiner als $r^{*}(\varphi) = \tfrac{1}{W(\tfrac{1-\varphi}{e\varphi})+1}$ erreicht
+
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \subsection{Algorithmen mit fester Lagerfunktion}
 
