@@ -5,10 +5,52 @@
 
 \subsection{Zusammenhang der beiden Problemvarianten}
 
+\textbf{Theorem 5.1.} a) Zu jedem randomisierten Algorithmus $A_{R}$ für One-Way-Trading existiert ein deterministischer Algorithmus $A_{D}$ für One-Way-Trading, sodass $p_{A_{D}}(\sigma) = E[p_{A_{R}}(\sigma)]$ für alle Eingaben $\sigma$ gilt. \\
+b) Für jeden deterministischen Algorithmus $A_{D}$ für One-Way-Trading existiert ein randomisierter Algorithmus $A_{R}$ für Online-Suche, sodass $p_{A_{D}}(\sigma) = E[p_{A_{R}}(\sigma)]$ für alle Eingaben $\sigma$ gilt.
+
+\textit{Beweis:} a) Sei beliebige Eingabe $\sigma = (p_{1}, ..., p_{n})$ gegeben. Außerdem sei $A_{R}$ ein bel. randomisierter Algo. Algo $A_{D}$ tauscht im i-ten Schritt genau so viel, wie $A_{R}$ im Erwartungswert ($E[X_{i}]$). Dies ist möglich, da sowohl $E[X_{i}]$ als auch die Summe aller Erwartungswerte zwischen 0 und 1 liegen muss (da sonst der Algorithmus $A_{R}$ ungültig wäre). \\
+b) Sei $A_{D}$ bel. deterministischer Algo für One-Way-Trading. $x_{i}$ ist der Betrag, den $A_{D}$ im i-ten Schritt tauscht. Der randomisierte Algorithmus $A_{R}$ akzeptiert den i-ten Wechselkurs mit Wahrscheinlichkeit $x_{i}$. (Dieser Algo ist erlaubt, da die Summe aller $x_{i} \le 1$ ist.)
+
 \subsection{Algorithmen für Online-Suche}
+
+Das Intervall [m, M] beinhaltet alle möglichen Wechselkurse.\\
+$\varphi = \tfrac{M}{m}$\\
+\\
+\textit{Reservationspreisalgorithmus (RPA(z)):} Akzeptiert den ersten Wechselkurs $\ge$ z. Gibt es keinen, muss er am Ende zum Wechselkurs m tauschen.  
+
+\textbf{Theorem 5.2.} Der Algorithmus RPA(p*) mit $p* = \sqrt{Mm}$ ist strikt $\sqrt{\varphi}$ - kompetitiv.
+
+\textit{Beweis:} Sei $\sigma = (p_{1}, ..., p_{n})$ bel. Eingabe. Es gilt OPT $(\sigma) = p_{max}$. \\
+1.Fall: Ist $p_{max} < p*$, so ist $p_{RPA(p*}(\sigma) = m$ (hat keinen Kurs akzeptiert). Also gilt: $\tfrac{OPT(\sigma)}{p_{RPA(p*)(\sigma)}} < \tfrac{p*}{m} = \sqrt{\varphi}$.\\
+2.Fall: Ist $p_{max} \ge p*$ so ist $p_{RPA(p*}(\sigma) \ge p*$ (hat ersten Wechselkurs $\ge$ p* akzeptiert). Also gilt: $\tfrac{OPT(\sigma)}{p_{RPA(p*)(\sigma)}} \le \tfrac{M}{p*} = \sqrt{\varphi}$.
+
+\textit{EXPO (randomisiert):} Sei $\varphi = M / m = 2^k$. EXPO wählt i uniform zufällig aus der Menge {0, ..., k - 1} aus und wendet den deterministischen Algo RP$A(m2^{i})$ an.
+
+\textbf{Theorem 5.3.} Der Algorithmus EXPO ist strikt $(c(\varphi)log\varphi)$-kompetitiv. Dabei ist c eine Funktion, ddie für große $\varphi$ gegen 1 konvergiert und für die $c(\varphi) \le 2$ für alle $\varphi = 2^k$ gilt.
+
+\textit{Beweis:} 
+
+\textbf{Theorem 5.4.} Der Algorithmus $EXPO_{q}$ ist strikt $\tfrac{2}{q\lfloor log\varphi \rfloor)}$-kompetitiv.
+
+\textit{Beweis:} 
 
 \subsection{Optimaler Onlin-Algorithmus für One-Way-Trading}
 
+\textit{Drohungs-Algorithmus (Threat):} Threat bekommt einen Wert $r \ge 1$ übergeben und versucht, einen strikt kompetitiven Faktor r zu erreichen. Sei $\sigma = (p_{1}, ..., p_{n})$ die Eingabe. Dann verhält sich Threat(r) wie folgt:\\
+1. Falls $p_{i} < max_{1 \le j < i}p_{j}$ (bisher bester Kurs), so tauscht der Algorithmus nichts.\\
+2. Ansonsten: Threat(r) tauscht den kleinstmöglichen Betrag zum Kurs $p_{i}$, dass er auf der bisherigen Eingabe strikt r-kompetitiv ist (falls die Eingabe zu Ende sein sollte, Threat müsste dann den Rest zum Kurs von m kaufen). Gibt es keinen solchen Betrag, so gibt Threat(r) eine Fehlermeldung zurück.
+
+\textbf{Theorem 5.5.} Gibt es einen strikt r-kompetitiven Algorithmus für One-Way-Trading, so ist auch der Algorithmus Threat(r) strikt r-kompetitiv. Insbesondere gibt Threat(r) dann auf keiner Eingabe eine Fehlermeldung aus.
+
+\textit{Beweis:} 
+
+\textbf{Korollar 5.6.} Es sei $\sigma$ eine beliebige Eingabe der Länge n für One-Way-Trading. Gibt es einen Algorithmus, der auf der Eingabe $\sigma^{i}$ mit i $\in$ {1, ..., n} strikt r-kompetitiv ist, so ist auch der Algorithmus Threat(r) strikt r-kompetitiv auf $\sigma$ und gibt insbesondere keine Fehlermeldung auf dieser Eingabe aus.
+
+\textbf{Korollar 5.7.} In dem Szenario, dass das Intervall [m, M] und die Eingabenlänge n bekannt sind, ist Threat($r*_{n}$(m, M)) ein optimaler Online-Algorithmus.
+
+\textit{Beweis:} 
+
+\textbf{Korollar 5.8.} In dem Szenario, dass nur das Intervall [m, M] bekannt ist, ist der Algorithmus Threat($r*_{\infty}$(m, M)) ein optimaler Online-Alforithmus. Er erreicht einen strikt kompetitiven Faktor von $\Theta(log \varphi)$. 
 
 \section{Economical Caching}
 
