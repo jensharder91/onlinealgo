@@ -26,13 +26,15 @@ $\varphi = \tfrac{M}{m}$\\
 
 \textit{EXPO (randomisiert):} Sei $\varphi = M / m = 2^k$. EXPO wählt i uniform zufällig aus der Menge {0, ..., k - 1} aus und wendet den deterministischen Algo RP$A(m2^{i})$ an.
 
-\textbf{Theorem 5.3.} Der Algorithmus EXPO ist strikt $(c(\varphi)log\varphi)$-kompetitiv. Dabei ist c eine Funktion, ddie für große $\varphi$ gegen 1 konvergiert und für die $c(\varphi) \le 2$ für alle $\varphi = 2^k$ gilt.
+\textbf{Theorem 5.3.} Der Algorithmus EXPO ist strikt $(c(\varphi)log\varphi)$-kompetitiv. Dabei ist c eine Funktion, die für große $\varphi$ gegen 1 konvergiert und für die $c(\varphi) \le 2$ für alle $\varphi = 2^k$ gilt.
 
 \textit{Beweis:} !!!!!TODO!!!!!
 
 \textbf{Theorem 5.4.} Der Algorithmus $EXPO_{q}$ ist strikt $\tfrac{2}{q\lfloor log\varphi \rfloor)}$-kompetitiv.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Es sei $\sigma = (p_{1}, p_{2}, ..., p_{n}$ bel. Eingabe.Es sei j $\in$ \{0, 1, ...\} so gewählt, dass $p_{1}2^{j} \le p_{max} < p_{1}2^{j+1}$ gilt. Da $p_{1} \ge m$ ist und $p_{max} \le M$ gilt: \\
+j = $\lfloor log(\tfrac{p_{max}}{p_{1}} \rfloor \le \lfloor log \varphi \rfloor$. \\
+RPA($p_{1}2^{2j}$) erreicht auf der Eingabe $\sigma$ mindestens einen Gewinn von $p_{1}2^{j} \ge \tfrac{p_{max}}{2}$. (Es folg eine Rechnung mit der Abschätzung).
 
 \subsection{Optimaler Onlin-Algorithmus für One-Way-Trading}
 
