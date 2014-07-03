@@ -1,8 +1,11 @@
 \chapter{Scheduling}
 
+Die Ausführungszeit von Maschiene i $\in$ M in Schedule $\pi$ ist: $L_{i}(\pi) = \tfrac{\sum_{j \in J: \pi(j)=i} p_{j}}{s_{i}}$. (Summe der Jobgrößen auf i geteilt durch Geschwindigkeit von i) \\
+Der Makespan $C(\pi) = \max_{i \in M} L_{i}(\pi)$ ist die Ausführungszeit der Maschiene, die am längsten benötigt. (Dies soll minimiert werden)
 
 \section{Identische Maschinen}
 
+\textit{Least-Loaded-Algorithmus} weißt der Maschiene den Job zu, die momentan die kleinste Ausführungszeit hat.
 
 \textbf{Theorem 6.1.} Der Least-Loaded-Algorithmus ist für Online-Scheduling mit identlischen Maschinen strikt $(2-\frac{1}{m})$-kompetitiv.
 
