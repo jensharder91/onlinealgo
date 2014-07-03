@@ -1,13 +1,53 @@
 \chapter{Approximation von Metriken}
 
+\textbf{Definition 4.1.} Es sein $\mathcal{M}$ = (M, d) eine lebliebige Metrik. Wir sagen, dass eine Metrik $\mathcal{M}$ = (M', d') mit M $\subseteq$ M' die Metrik $\mathcal{M}$ dominiert, wenn d(x, y) $\le$ d'(x, y) für alle x, y $\in$ M gilt. Es sei $\mathcal{S}$ eine Menge von Metriken, die $\mathcal{M}$ dominieren, und sei $\mathcal{D}$ eine Wahrscheinlichkeitsverteiulung auf der Menge $\mathcal{S}$. WIr sagen, dass ($\mathcal{S}$, $\mathcal{D}$) eine $\alpha$-Approximation der Metrik $\mathcal{M}$ ist, wenn für alle x, y $\in$ M
+\\$E_{(M', d')~D} [d'(x, y)] \le \alpha \cdot d(x, y)$\\
+ gilt. Das bedeutet, für jedes feste Paar x udn y von Punkten aus M darf die erwartete Entfernung in einer zufällig gemäß der Verteilung $\mathcal{D}$ gewählten Metrik höchstens $\alpha \cdot d(x, y)$ betragen.
 
 \section{Approximation durch Baummetriken}
 
+\textbf{Theorem 4.2.} Für jede Metrik $\mathcal{M}$ mit N Punkten gibt es eine Menge $\mathcal{S}$ von Baummetriken, die $\mathcal{M}$ dominieren, und eine Wahrscheinlichkeitsverteilung $\mathcal{D}$ auf $\mathcal{S}$, sodass ($\mathcal{S}$, $\mathcal{D}$) eine O(log N)-Approximation von $\mathcal{M}$ ist. Es gibt ferner einen effizienten Algorithmus, der zu jeder Metrik $\mathcal{M}$ eine solche Einbettung ($\mathcal{S}$, $\mathcal{D}$) berechnet.
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
 \subsection{Hierarchische Partitionen und Baummetriken}
+
+\textbf{Definition 4.3.} Eine Partition der Metrik $\mathcal{M}$ = (V, d) mit Radius $r \ge 1$ ist eine Partition der Menge V in Klassen $V_{1}, ... V_{l}$, sodass für jede Menge $V_{i}$ ein Zentrum $c_{i} \in V$ existiert, für das $d(c_{i}, v) \le r$ für alle Punkte $v \in V_{i}$ gilt.
+
+\textbf{Definition 4.4.} Eine hierachische Partition der Metrik $\mathcal{M}$ = (V, d) ist eine Sequenz $D_{0}, D_{1}, ... D_{\delta}$ von $\delta$ + 1 Partitionen von V mit den folgenden Eigenschaften.\\
+1. Es gilt $D_{\delta}$ = {V}, d.h. $D_{\delta}$ ist die triviale Partition der Metrik $\mathcal{M}$ mit Radius $2^{\delta}$, in der alle Punkte aus V zur selben Klasse gehören. \\
+2. Für jedes i $\le \delta$ ist $D_{i}$ eine Partition der Metrik $\mathcal{M}$ mit Radius $2^{i}$, die die Partition $D_{i+1}$ verfeinert. Das heißt, jede Klasse von $D_{i}$ ist Teilmenge einer Klasse von $D_{i+1}$.
+
+\textbf{Lemma 4.5.} Für jede hierachische Partition einer Metrik $\mathcal{M}$ = (V, d) dominiert die resultierende Baummetrik $D_{T}$ die Metrik d.
+
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \subsection{Erzeugung von hierarchischen Partitionen}
 
+\textit{Algorithmus:} HierPart($\mathcal{M}$ = (V, d)) erzeugt mit hilfe von Partition($\mathcal{M}$, D, $\alpha$, $\pi$) eine hierarchische Partition.
+
 \subsection{Analyse des Streckungsfaktors}
 
+\textit{Theorem 4.2} folgt aus folgendem Lemma:
+
+\textbf{Lemma 4.6.} Es sei $d_{T}$ die Baummetrik, die sich aus der hierachischen Partition ergibt, die der Algorihmus HierPart($\mathcal{M}$ = (V, D)) ausgibt. Für jedes Paar x $\in$ V und y $\in$ V gilt:\\
+$E[d_{T}(x, y)] \le 64 H_{N} \cdot d(x, y)$, \\
+wobei $H_{N}$ die N-te harmonische Zahl bezeichnet.
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
+\textbf{Lemma 4.8.} Für jeden Knoten $v_{l}$ gibt es maximal vier Ebenen j $\in {0, 1, ... \delta - 1}$, für die das Ereignis A($v_{l}$, j) eintreten kann.
+
+\textit{Beweis:} !!!!!TODO!!!!!
+
+\textbf{Beobachtung 4.9.} Für jede baummetrik $\mathcal{M}_{T} = (V_{T}, d_{T})$ aus der Menge $\mathcal{S}$ aus Theorem 4.2. gilt: \\
+$\max_{x, y \in V_{T}} d_{T}(x, y) \le 8 \cdot \max_{x, y \in V} d(x, y)$.
+
+\textit{Beweis:} !!!!!TODO!!!!!
 
 \section{Anwendung auf das $k$-Server-Problem}
+
+
+\textbf{Theorem 4.10.} Es gibt einen randomisierten Online-Algorithmus für das k-Server-Problem, der für jede Metrik mit N Punkten =(k $\cdot$ log N)-kompetitiv ist.
+
+\textit{Beweis:} !!!!!TODO
