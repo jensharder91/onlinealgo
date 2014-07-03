@@ -24,6 +24,8 @@ Bisher konnte diese Vermutung noch nicht bewiesen werden. Daher ist sie wohl nic
 
 \section{Untere Schranke für deterministische Algorithmen}
 
+Um die untere Schranke für deterministische Algorithmen zu zeigen, müssen wir die Kosten eines beliebigen deterministischen Algorithmus $A$ nach unten, und die optimalen Kosten nach oben abschätzen.
+
 \textbf{Theorem 3.3.} Es sei $\mathcal{M} = (M,d)$ ein beliebiger metrischer Raum mit $|M| \geq k+1$. Dann gibt es für kein $r < k$ einen $r$-kompetitiven Online-Algorithmus für das $k$-Server-Problem auf $\mathcal{M}$.
 
 \textit{Beweis.} Sei $B \subseteq M$ eine beliebige Teilmenge von $M$ mit $k+1$ Elementen und $A$ ein beliebiger fauler deterministischer Algorithmus. Da es einen Punkt mehr als Server gibt, ist immer genau ein Punkt nicht von einem Server besetzt. Deshalb wählen wir die Sequenz so, dass die Anfrage immer genau dort auftritt, wo kein Server steht.
@@ -36,12 +38,17 @@ Bisher konnte diese Vermutung noch nicht bewiesen werden. Daher ist sie wohl nic
 
 \textbf{Lemma 3.5.} Es gilt $$\textrm{OPT}(\sigma) \leq \frac{1}{k}\sum_{i=1}^{n-1}d(\sigma_i,\sigma_{i+1})$$
 
-\textit{Beweis.} Fehlt noch!
+\textit{Beweis.} Wir definieren eine Klasse $C$ von Algorithmen auf einer Menge $S \subseteq B$ mit $b_1 \in S$ und $|S|=k$. Somit erhalten wir genau $k$ Algorithmen. Bei einer Anfrage $\sigma_i$, auf der kein Server steht, wird der Server von $\sigma_{i-1}$ dort hin bewegt. Dies kann bei einer Anfrage aber immer nur höchstens für einen Algorithmus der Klasse $C$ passieren. Somit entstehen durchschnittliche Kosten von $$\frac{1}{k}\sum_{i=1}^{n-1}d(\sigma_i,\sigma_{i+1})$$. Somit wissen wir, dass einer der Algorithmen aus Klasse $C$ geringere Kosten haben muss, da nicht alle Kosten größer als deren Durchschnitt sein können.
 
 
 \section{Das $k$-Server-Problem auf Linien und Bäumen}
 
 \subsection{Analyse des DC-Algorithmus auf der Linie}
+
+\textbf{Theorem 3.6.} Der DC-Algorithmus ist $k$-kompetitiv für das $k$-Server-Problem auf der Linie.
+
+\textit{Beweis.} Der Beweis kann nur mit Hilfe der Potentialfunktion $\Phi$ geführt werden, da der DC-Algorithmus in manchen Schritten mehr als $k$-mal so viele Kosten wie OPT hat. Die Potentialfunktion beschreibt hierbei die „Unterschiedlichkeit“ der Server-Positionen von DC und OPT.
+
 
 \subsection{Analyse des DC-Algorithmus auf der Bäumen}
 
