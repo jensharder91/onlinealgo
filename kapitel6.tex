@@ -32,13 +32,17 @@ Der Makespan von $\pi$ kann als nur größer als $\tfrac{4}{3}$ sein, wenn $p_{n
 Im optimalen Schedule kann als jede Maschiene nur höchstens 2 Jobs haben (Die Zuweisung ist: $j \in {1, ..., m} wir Maschiene j zugewiesen;  j \in {m+1, ..., n} wird Maschiene 2m - j + 1$ zugewiesen).\\ 
 Da auch LPT den aktuellen Job der Maschiene mit der geringsten Ausführungszeit zuweist, inspricht dass genau der Zuweisung, die gerade beschrieben wurde. Es folgt ein induktives Argument, dass den Widerspruch zeit.
 
-
-
 \section{Maschinen mit Geschwindigkeiten}
+
+\textit{SlowFit($\alpha$)} Wird ein neuer Job j $\in$ J der Größe $p_{j}$ präsentiert, so weise ihn der langsamsten Maschiene i $\in$ M zu, die nach der Zuweisung von Job j eine Ausführungszeit von höchstens $2 \alpha$ hat. Fall es keine solche Maschiene gibt, gebe eine Fehlermeldung aus.
 
 \textbf{Lemma 6.3.} Es sei $\alpha \in \mathbb{R}_{>0}$ beliebig und $\sigma$ sei eine beliebige Eingabe für Online-Scheduling mit $\textrm{OPT}(\sigma) \leq \alpha$. Dann gibt der Algorithmus $\textrm{SLOWFIT}(\alpha)$ auf der Eingabe $\alpha$ keine Fehlermeldung aus und berechnet einen Schedule $\pi$ mit $C(\pi) \leq 2 \alpha$.
 
-\textit{Beweis.} Fehlt noch!
+\textit{Beweis.} Da SlowFit, falls er keine Fehlermeldung ausgibt, immer ein Schedule $\pi$ mit $C(\pi) \le 2 \alpha$ berechnet, muss man nur zeigen, dass SlowFit keine Fehlermeldung ausgibt.\\
+Man kann sich überlegen, dass nicht alle Maschienen eine größere Ausführungszeit haben können, als das optimale Schedule. \\
+Wir betrachten die schnellste Maschiene f, für die gilt $L_{f}(\pi_{n-1}) \le OPT(\sigma)$. Es muss auf jedenfall gelten f < schnellste Maschiene m; ansonsten würde der Algo keine Fehlermeldung ausgeben.\\
+Wir setzen $\Gamma$ = \{i $\in$ M | i > f\} (also alle Maschienen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
+Die Gesamtgröße alle Jobs, die einer maschiene aus $\Gamma$ zugewiesen wurden, ist größer als $\sum_{i \in \gamma}(s_{i} \cdot OPT(\sigma))$. Daher muss es in einem optimalen Schedule einen Job aus $\gamma$ geben, der einer Maschiene i $\le$ f zugewiesen wird. Man hätte diesen Job als auch im schlimmsten Fall der Maschiene f zuweisen können, da $p_{j}/s_{f} \le OPT(\sigma)$ gilt und somit die Ausführungszeit der Maschiene f + die des neuen Jobs immernoch kleiner ist als 2 mal OPT($\sigma$) und somit $\le 2\alpha$. Daher gibt der Algorithmus keine Fehlermeldung aus.
 
 
 \textbf{Theorem 6.4.} Der Algorithmus SLOWFIT ist ein strikt 8-kompetitiver Algorithmus für Online-Scheduling.
