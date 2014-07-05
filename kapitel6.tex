@@ -9,8 +9,19 @@ Der Makespan $C(\pi) = \max_{i \in M} L_{i}(\pi)$ ist die Ausführungszeit der M
 
 \textbf{Theorem 6.1.} Der Least-Loaded-Algorithmus ist für Online-Scheduling mit identlischen Maschinen strikt $(2-\frac{1}{m})$-kompetitiv.
 
-\textit{Beweis.} Fehlt noch!
+\textit{Beweis.} Wir betrachten zwei untere Schranken für den Makespan des optimalen Schedules ($\pi^{*}$): \\
+1) $C(\pi^{*}) \ge \tfrac{1}{m} \sum_{j \in J} p_{j}$ (es gibt eine Maschiene, die mind. die Durchschnittsdauer benötigt) und  \\
+2) $C(\pi^{*}) \ge max_{j \in J} p_{j}$ (es gibt eine Maschiene, die mind. so lange benötigt wie für den längsten job. \\
+Man nutzt nun aus, dass der Algo Least-Loaded den aktuellen Job immer der Maschiene zuweist, die die kleinste Ausführungszeit hat zu diesem Zeitpunkt, also einer Maschiene, derem Ausführungszeit kleinergleich dem Durchschnitt ist: $C(\pi) = L_{i}(\pi) \le \tfrac{1}{m} (\sum_{k=1}^{j-1}p_{k}) + p_{j}$. Es folgt eine Rechnung, in der beide beide untere Schranken für Makespan benutzt werden und die zum Ergebnis: $C(\pi) = L_{i}(\pi) \le ... = (2-\tfrac{1}{m} \cdot C(\pi^{*}))$ kommt. Damit ist das Theorem bewiesen.
 
+\textit{Untere Schranke für Least-Loadded-Algorithmus:} Durch ein Beispiel kann man sehen, dass $2 - \tfrac{1}{m}$ eine untere Schranke für den Algo ist: \\
+Es gibt m Maschienen und m(m-1) + 1 Jobs, wobei alle Jobs die Größe 1 haben, bis auf den letzten, der die Größe m hat. \\
+Der opt. off. Algo verteilt jetzt den letzten (größten) Job auf eine Maschiene und alle anderen Jobs auf die restlichen Maschienen gleichmäßig. (Alle Maschienen haben eine Ausführungszeit von m). \\
+Least-Loaded verteilt alle Jobs gleichmäßig auf alle Maschienen und den letzten (größten) Job auf eine bel. Maschiene (da alle gleich strak belastet sind). Dadurch hat die eine Maschiene eine Ausführungszeit von (m-1) + m = 2m - 1. Also: $\tfrac{2m - 1}{m} = 2 - \tfrac{1}{m}$.
+
+\textit{Longest-Processing-Time (LPT):} \\
+1.) Sortiere die Jobs, sodass $p_{1} \ge p_{2} \ge ... \ge p_{n}$  gilt. (Achtung: dies ist nicht mehr online!)\\
+2.) Führe den Least-Loaded-Algorithmus auf den sortierten Jobs aus.
 
 \textbf{Theorem 6.2.} Der Longest-Processing-Time-Algorithmus ist ein $\frac{4}{3}$-Approximationsalgorithmus für Scheduling mit identischen Maschinen.
 
