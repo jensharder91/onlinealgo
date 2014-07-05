@@ -35,7 +35,10 @@ Das Intervall $[m, M]$ beinhaltet alle möglichen Wechselkurse. Es sei $\varphi 
 
 \textbf{Theorem 5.3.} Der Algorithmus EXPO ist strikt $(c(\varphi)\log\varphi)$-kompetitiv. Dabei ist $c$ eine Funktion, die für große $\varphi$ gegen 1 konvergiert und für die $c(\varphi) \le 2$ für alle $\varphi = 2^k$ gilt.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Es sei $\sigma = (p_{1}, ..., p_{n})$ bel. Eingabe. Es gilt OPT$(\sigma) = p_{max}$. Gilt $p_{max} = m2^{k}$, so ist j = k-1. Ansonsten ist $j \in {0, 1, ..., k-1}$, sodass $m2^{j} \le p_{max} < m2^{j+1}$ gilt. (Man kann j so wählen, da M = $m2^{k}$).\\
+Der Gewinn von RPA($m2^{i}$) mit $i \in {0, 1, ..., k-1}$ lässt sich wie folgt beschreiben: Ist $i > j$, so akzeptiert der Algo keinen Preis und hat daher nur ein Gewinn von m. Ist $i \le j$, so erreicht der Algo einen Gewinn von $m2^{i}$. i wird uniform zufällig aus der Menge \{0, ..., k-1\}.\\
+Außerdem gilt: $OPT(\sigma) = p_{max} \le m2^{j+1}$.\\
+Mit diese Informationen kann man eine Abschätzung (incl. Kurvendiskusion) machen, sodass das Theorem gilt.
 
 \textbf{Theorem 5.4.} Der Algorithmus $\textrm{EXPO}_{q}$ ist strikt $\frac{2}{q(\lfloor log\varphi \rfloor)}$-kompetitiv.
 
@@ -53,7 +56,10 @@ $\textrm{RPA}(p_{1}2^{2j})$ erreicht auf der Eingabe $\sigma$ mindestens einen G
 
 \textbf{Theorem 5.5.} Gibt es einen strikt $r$-kompetitiven Algorithmus für One-Way-Trading, so ist auch der Algorithmus Threat($r$) strikt $r$-kompetitiv. Insbesondere gibt Threat($r$) dann auf keiner Eingabe eine Fehlermeldung aus.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Sei $\sigma = (p_{1}, ..., p_{n})$ bel. Eingabe und A ein bel. strikt r-kompetitiver Algorithmus für das One-Way-Trading.\\
+Man kann o.B.d.A davon ausgehen, dass A deterministisch ist (Theorem 5.1) und dass die Eingabe monoton steigend ist $(p_{1} < p_{2} <... <p_{n})$. (Davon kann man ausgehen, da sonst die \"fallenden\" Preise sowohl von Threat(r), als auch vom opt. offline Algo einfach ignoriert werden und es somit keinen Uterschied macht.)\\
+A tauscht im ersten Schritt einen betrag $x_{1}$, der garantiert, dass er strikt r-kompetitiv ist (falls die Eingabe schon endet). Gibt es einen solchen Betrag, wählt Threat(r) den kleinsten Betrag $y_{1}$, sodass er strikt r-kompetitiv ist. Es gilt daher $y_{1} \le x_{1}$.\\
+Diese Prozedur wird jetzt induktiv wiederholt. Da die Eingabe monoton wachend ist und $y_{i} \le x_{i}$ ist (Threat(r) wählt immer den kleinsten Betrag), ist Threat(r) auf jedenfall strikt r-kompetitiv, falls A strikt k-kompetitiv ist, da wir entweder kleich getauscht haben, oder sogar an Kosten gesparrt haben, wenn wir weniger als nötig getauscht haben. Insbesodere gibt Threat(r) keine Fehlermeldung aus, da es immer möglich ist den entsprechenden Betrag zu tauschen.
 
 \textbf{Korollar 5.6.} Es sei $\sigma$ eine beliebige Eingabe der Länge $n$ für One-Way-Trading. Gibt es einen Algorithmus, der auf der Eingabe $\sigma^{i}$ mit $i \in \{1, ..., n\}$ strikt $r$-kompetitiv ist, so ist auch der Algorithmus Threat($r$) strikt $r$-kompetitiv auf $\sigma$ und gibt insbesondere keine Fehlermeldung auf dieser Eingabe aus.
 
