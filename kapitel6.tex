@@ -25,7 +25,12 @@ Least-Loaded verteilt alle Jobs gleichmäßig auf alle Maschienen und den letzte
 
 \textbf{Theorem 6.2.} Der Longest-Processing-Time-Algorithmus ist ein $\frac{4}{3}$-Approximationsalgorithmus für Scheduling mit identischen Maschinen.
 
-\textit{Beweis.} Fehlt noch!
+\textit{Beweis.} Wir beweisen das Theorem durch einen Widerspruch: \\
+Man kann (ähnlich wie in Theor. 6.1.) argumentieren, dass es zum Zeitpunkt der Zuweisung von Job n eine Maschiene gibt, deren Ausführungszeit unterhalb des Durchschnitts liegt, da wir Job n der Maschiene mit der kleinsten Ausführungszeit zuweisen. Es gilt: \\
+$C(\pi) = L_{i}(\pi) \le \tfrac{1}{m} ( \sum_{j=1}^{n-1} p_{j}) +p_{n} \le OPT(\sigma) + p_{n}$. \\
+Der Makespan von $\pi$ kann als nur größer als $\tfrac{4}{3}$ sein, wenn $p_{n} > \tfrac{1}{3} OPT(\sigma)$ ist, und damit, aufgrund der Sortierung der Jobs, alle Jobts $> \tfrac{1}{3} OPT(\sigma)$  sind.\\
+Im optimalen Schedule kann als jede Maschiene nur höchstens 2 Jobs haben (Die Zuweisung ist: $j \in {1, ..., m} wir Maschiene j zugewiesen;  j \in {m+1, ..., n} wird Maschiene 2m - j + 1$ zugewiesen).\\ 
+Da auch LPT den aktuellen Job der Maschiene mit der geringsten Ausführungszeit zuweist, inspricht dass genau der Zuweisung, die gerade beschrieben wurde. Es folgt ein induktives Argument, dass den Widerspruch zeit.
 
 
 
