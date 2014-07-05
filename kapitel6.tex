@@ -40,8 +40,8 @@ Da auch LPT den aktuellen Job der Maschiene mit der geringsten Ausführungszeit 
 
 \textit{Beweis.} Da SlowFit, falls er keine Fehlermeldung ausgibt, immer ein Schedule $\pi$ mit $C(\pi) \le 2 \alpha$ berechnet, muss man nur zeigen, dass SlowFit keine Fehlermeldung ausgibt.\\
 Man kann sich überlegen, dass nicht alle Maschienen eine größere Ausführungszeit haben können, als das optimale Schedule. \\
-Wir betrachten die schnellste Maschiene f, für die gilt $L_{f}(\pi_{n-1}) \le OPT(\sigma)$. Es muss auf jedenfall gelten f < schnellste Maschiene m; ansonsten würde der Algo keine Fehlermeldung ausgeben.\\
-Wir setzen $\Gamma$ = \{i $\in$ M | i > f\} (also alle Maschienen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
+Wir betrachten die schnellste Maschiene f, für die gilt $L_{f}(\pi_{n-1}) \le OPT(\sigma)$. Es muss auf jedenfall gelten f $<$ schnellste Maschiene m; ansonsten würde der Algo keine Fehlermeldung ausgeben.\\
+Wir setzen $\Gamma = \{i \in M | i > f\}$ (also alle Maschienen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
 Die Gesamtgröße alle Jobs, die einer maschiene aus $\Gamma$ zugewiesen wurden, ist größer als $\sum_{i \in \gamma}(s_{i} \cdot OPT(\sigma))$. Daher muss es in einem optimalen Schedule einen Job aus $\gamma$ geben, der einer Maschiene i $\le$ f zugewiesen wird. Man hätte diesen Job als auch im schlimmsten Fall der Maschiene f zuweisen können, da $p_{j}/s_{f} \le OPT(\sigma)$ gilt und somit die Ausführungszeit der Maschiene f + die des neuen Jobs immernoch kleiner ist als 2 mal OPT($\sigma$) und somit $\le 2\alpha$. Daher gibt der Algorithmus keine Fehlermeldung aus.
 
 \textit{SlowFit (ohne $\alpha$ zu kennen:)}\\
@@ -57,5 +57,5 @@ Die Gesamtgröße alle Jobs, die einer maschiene aus $\Gamma$ zugewiesen wurden,
 
 \textit{Beweis.} Sei $\sigma$ eine bel. Eingabe, auf der SlowFit die phasen 0, 1, ..., h durchläuft.\\
 1.Fall: gilt h = 0, so ist der Makespan höchstens $2\alpha$ und der Algo liefert eine 2-Approximation.\\
-2.Fall: h > 0: Wir betrachten Phase h-1 und den ersten Job j aus Phase h: Da in Phase h-1 alle Jobs ignoriert werden, die in einer vorherigen Phase zugewiesen wurden, macht der Algo nur dann eine Fehlermeldung, wenn für das Einfügen des jobs j nach dem Einfügen aller jobs aus Phase h-1 gilt: OPT($\sigma_{h-1}j) > \alpha_{h-1} = 2^{h-1}\alpha_{0}$.Jetzt schätzen wir den Makespan ab: $C(\pi) \le \sum_{k=0}^{k}2\alpha_{k} = ... \le 2^{h+2}\alpha_{0}$.\\
+2.Fall: h $>$ 0: Wir betrachten Phase h-1 und den ersten Job j aus Phase h: Da in Phase h-1 alle Jobs ignoriert werden, die in einer vorherigen Phase zugewiesen wurden, macht der Algo nur dann eine Fehlermeldung, wenn für das Einfügen des jobs j nach dem Einfügen aller jobs aus Phase h-1 gilt: OPT($\sigma_{h-1}j) > \alpha_{h-1} = 2^{h-1}\alpha_{0}$.Jetzt schätzen wir den Makespan ab: $C(\pi) \le \sum_{k=0}^{k}2\alpha_{k} = ... \le 2^{h+2}\alpha_{0}$.\\
 Damit ist gezeigt, dass $C(\pi) \le 2^{h+2}\alpha_{0} = 8 \cdot 2^{h-1} \alpha_{0} < 8 \cdot OPT(\sigma_{h-1}j) \le 8 \cdot OPT(\sigma)$ gilt.
