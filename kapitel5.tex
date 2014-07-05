@@ -65,7 +65,9 @@ Diese Prozedur wird jetzt induktiv wiederholt. Da die Eingabe monoton wachend is
 
 \textbf{Korollar 5.7.} In dem Szenario, dass das Intervall $[m, M]$ und die Eingabenlänge $n$ bekannt sind, ist Threat($r_{n}^{*}(m, M)$) ein optimaler Online-Algorithmus.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Widerspruchsbeweis: Angenommen es gäbe einen online-Algorithmus A, der einen strikt kompetitiven Faktor von r $< r_{n}^{*}(m, M)$ auf allen Eingaben der länge n mit Wechselkursen aus [m, M] erreicht. 
+Da r $< r_{n}^{*}(m, M)$ gibt es eine Eingabe $\sigma = (p_{1}, .., p_{k})$ mit $rm \le p_{1} < ... < p_{k}$ und $k \le n$, auf der Threat(r) eine fehlermeldung ausgibt. \\
+Da A aber laut Annahme auf $\sigma$ und jede, Präfix von $\sigma$ strikt r-kompetitiv sein soll ist das ein Widerspruch zu korollar 5.6.
 
 \textbf{Korollar 5.8.} In dem Szenario, dass nur das Intervall $[m, M]$ bekannt ist, ist der Algorithmus Threat($r_{\infty}^{*}(m, M)$) ein optimaler Online-Alforithmus. Er erreicht einen strikt kompetitiven Faktor von $\Theta(\log \varphi)$.
 
