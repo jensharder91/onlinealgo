@@ -44,6 +44,14 @@ Wir betrachten die schnellste Maschiene f, für die gilt $L_{f}(\pi_{n-1}) \le O
 Wir setzen $\Gamma$ = \{i $\in$ M | i > f\} (also alle Maschienen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
 Die Gesamtgröße alle Jobs, die einer maschiene aus $\Gamma$ zugewiesen wurden, ist größer als $\sum_{i \in \gamma}(s_{i} \cdot OPT(\sigma))$. Daher muss es in einem optimalen Schedule einen Job aus $\gamma$ geben, der einer Maschiene i $\le$ f zugewiesen wird. Man hätte diesen Job als auch im schlimmsten Fall der Maschiene f zuweisen können, da $p_{j}/s_{f} \le OPT(\sigma)$ gilt und somit die Ausführungszeit der Maschiene f + die des neuen Jobs immernoch kleiner ist als 2 mal OPT($\sigma$) und somit $\le 2\alpha$. Daher gibt der Algorithmus keine Fehlermeldung aus.
 
+\textit{SlowFit (ohne $\alpha$ zu kennen:)}\\
+1.) Setze $\alpha_{0} = p_{1}/s_{m}$. \\
+2.) Beginne mit Phase k = 0. \\
+3.) Für jeden Job j = 1, ..., n führe folgende Anweisung durch: \\
+4.) Versuche, Job j mit SlowFit($\alpha_{k}$) einer Maschiene zuzuweisen. Ignoriere dabei alle Jobs, die in früheren Phasen zugewiesen wurden. \\
+5.) Gibt SlowFit($\alpha_{k}$) keine Fehlermeldung aus, so übernimm die Zuweisung. \\
+6.) Ansonsten erhöhe k um eins und setze $\alpha_{k} = 2^{k}\alpha_{0}$ und gehe zurück zu Schritt 4. \\
+
 
 \textbf{Theorem 6.4.} Der Algorithmus SLOWFIT ist ein strikt 8-kompetitiver Algorithmus für Online-Scheduling.
 
