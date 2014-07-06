@@ -1,54 +1,68 @@
 \chapter{Scheduling}
 
-Die Ausführungszeit von Maschiene i $\in$ M in Schedule $\pi$ ist: $L_{i}(\pi) = \tfrac{\sum_{j \in J: \pi(j)=i} p_{j}}{s_{i}}$. (Summe der Jobgrößen auf i geteilt durch Geschwindigkeit von i) \\
-Der Makespan $C(\pi) = \max_{i \in M} L_{i}(\pi)$ ist die Ausführungszeit der Maschiene, die am längsten benötigt. (Dies soll minimiert werden)
+Die Ausführungszeit von Maschine $i \in M$ in Schedule $\pi$ ist: $L_{i}(\pi) = \frac{\sum_{j \in J: \pi(j)=i} p_{j}}{s_{i}}$. (Summe der Jobgrößen auf $i$ geteilt durch Geschwindigkeit von $i$)
+
+Der Makespan $C(\pi) = \max_{i \in M} L_{i}(\pi)$ ist die Ausführungszeit der Maschine, die am längsten benötigt. (Dies soll minimiert werden)
 
 \section{Identische Maschinen}
 
-\textit{Least-Loaded-Algorithmus} weißt der Maschiene den Job zu, die momentan die kleinste Ausführungszeit hat.
+\textit{Least-Loaded-Algorithmus} weißt der Maschine den Job zu, die momentan die kleinste Ausführungszeit hat.
 
 \textbf{Theorem 6.1.} Der Least-Loaded-Algorithmus ist für Online-Scheduling mit identlischen Maschinen strikt $(2-\frac{1}{m})$-kompetitiv.
 
-\textit{Beweis.} Wir betrachten zwei untere Schranken für den Makespan des optimalen Schedules ($\pi^{*}$): \\
-1) $C(\pi^{*}) \ge \tfrac{1}{m} \sum_{j \in J} p_{j}$ (es gibt eine Maschiene, die mind. die Durchschnittsdauer benötigt) und  \\
-2) $C(\pi^{*}) \ge max_{j \in J} p_{j}$ (es gibt eine Maschiene, die mind. so lange benötigt wie für den längsten job. \\
-Man nutzt nun aus, dass der Algo Least-Loaded den aktuellen Job immer der Maschiene zuweist, die die kleinste Ausführungszeit hat zu diesem Zeitpunkt, also einer Maschiene, derem Ausführungszeit kleinergleich dem Durchschnitt ist: $C(\pi) = L_{i}(\pi) \le \tfrac{1}{m} (\sum_{k=1}^{j-1}p_{k}) + p_{j}$. Es folgt eine Rechnung, in der beide beide untere Schranken für Makespan benutzt werden und die zum Ergebnis: $C(\pi) = L_{i}(\pi) \le ... = (2-\tfrac{1}{m} \cdot C(\pi^{*}))$ kommt. Damit ist das Theorem bewiesen.
+\textit{Beweis.} Wir betrachten zwei untere Schranken für den Makespan des optimalen Schedules ($\pi^{*}$):
 
-\textit{Untere Schranke für Least-Loadded-Algorithmus:} Durch ein Beispiel kann man sehen, dass $2 - \tfrac{1}{m}$ eine untere Schranke für den Algo ist: \\
-Es gibt m Maschienen und m(m-1) + 1 Jobs, wobei alle Jobs die Größe 1 haben, bis auf den letzten, der die Größe m hat. \\
-Der opt. off. Algo verteilt jetzt den letzten (größten) Job auf eine Maschiene und alle anderen Jobs auf die restlichen Maschienen gleichmäßig. (Alle Maschienen haben eine Ausführungszeit von m). \\
-Least-Loaded verteilt alle Jobs gleichmäßig auf alle Maschienen und den letzten (größten) Job auf eine bel. Maschiene (da alle gleich strak belastet sind). Dadurch hat die eine Maschiene eine Ausführungszeit von (m-1) + m = 2m - 1. Also: $\tfrac{2m - 1}{m} = 2 - \tfrac{1}{m}$.
+\begin{enumerate}
+\item $C(\pi^{*}) \ge \tfrac{1}{m} \sum_{j \in J} p_{j}$ (es gibt eine Maschine, die mind. die Durchschnittsdauer benötigt) und
+\item $C(\pi^{*}) \ge max_{j \in J} p_{j}$ (es gibt eine Maschine, die mind. so lange benötigt wie für den längsten Job.
+\end{enumerate}
 
-\textit{Longest-Processing-Time (LPT):} \\
-1.) Sortiere die Jobs, sodass $p_{1} \ge p_{2} \ge ... \ge p_{n}$  gilt. (Achtung: dies ist nicht mehr online!)\\
-2.) Führe den Least-Loaded-Algorithmus auf den sortierten Jobs aus.
+Man nutzt nun aus, dass der Algo Least-Loaded den aktuellen Job immer der Maschine zuweist, die die kleinste Ausführungszeit hat zu diesem Zeitpunkt, also einer Maschine, derem Ausführungszeit kleinergleich dem Durchschnitt ist: $C(\pi) = L_{i}(\pi) \le \frac{1}{m} (\sum_{k=1}^{j-1}p_{k}) + p_{j}$. Es folgt eine Rechnung, in der beide beide untere Schranken für Makespan benutzt werden und die zum Ergebnis: $C(\pi) = L_{i}(\pi) \le ... = (2-\tfrac{1}{m} \cdot C(\pi^{*}))$ kommt. Damit ist das Theorem bewiesen.
+
+\textit{Untere Schranke für Least-Loadded-Algorithmus:} Durch ein Beispiel kann man sehen, dass $2 - \tfrac{1}{m}$ eine untere Schranke für den Algo ist:
+
+Es gibt m Maschinen und $m(m-1) + 1$ Jobs, wobei alle Jobs die Größe 1 haben, bis auf den letzten, der die Größe $m$ hat.
+
+Der opt. off. Algo verteilt jetzt den letzten (größten) Job auf eine Maschine und alle anderen Jobs auf die restlichen Maschinen gleichmäßig. (Alle Maschinen haben eine Ausführungszeit von $m$).
+
+Least-Loaded verteilt alle Jobs gleichmäßig auf alle Maschinen und den letzten (größten) Job auf eine bel. Maschine (da alle gleich stark belastet sind). Dadurch hat die eine Maschine eine Ausführungszeit von $(m-1) + m = 2m - 1$. Also: $\frac{2m - 1}{m} = 2 - \tfrac{1}{m}$.
+
+\textit{Longest-Processing-Time (LPT):}
+\begin{enumerate}
+\item Sortiere die Jobs, sodass $p_{1} \ge p_{2} \ge ... \ge p_{n}$  gilt. (Achtung: dies ist nicht mehr online!)
+\item Führe den Least-Loaded-Algorithmus auf den sortierten Jobs aus.
+\end{enumerate}
 
 \textbf{Theorem 6.2.} Der Longest-Processing-Time-Algorithmus ist ein $\frac{4}{3}$-Approximationsalgorithmus für Scheduling mit identischen Maschinen.
 
-\textit{Beweis.} Wir beweisen das Theorem durch einen Widerspruch: \\
-Man kann (ähnlich wie in Theor. 6.1.) argumentieren, dass es zum Zeitpunkt der Zuweisung von Job n eine Maschiene gibt, deren Ausführungszeit unterhalb des Durchschnitts liegt, da wir Job n der Maschiene mit der kleinsten Ausführungszeit zuweisen. Es gilt: \\
-$C(\pi) = L_{i}(\pi) \le \tfrac{1}{m} ( \sum_{j=1}^{n-1} p_{j}) +p_{n} \le OPT(\sigma) + p_{n}$. \\
-Der Makespan von $\pi$ kann als nur größer als $\tfrac{4}{3}$ sein, wenn $p_{n} > \tfrac{1}{3} OPT(\sigma)$ ist, und damit, aufgrund der Sortierung der Jobs, alle Jobts $> \tfrac{1}{3} OPT(\sigma)$  sind.\\
-Im optimalen Schedule kann als jede Maschiene nur höchstens 2 Jobs haben (Die Zuweisung ist: $j \in {1, ..., m} wir Maschiene j zugewiesen;  j \in {m+1, ..., n} wird Maschiene 2m - j + 1$ zugewiesen).\\ 
-Da auch LPT den aktuellen Job der Maschiene mit der geringsten Ausführungszeit zuweist, inspricht dass genau der Zuweisung, die gerade beschrieben wurde. Es folgt ein induktives Argument, dass den Widerspruch zeit.
+\textit{Beweis.} Wir beweisen das Theorem durch einen Widerspruch:
+
+Man kann (ähnlich wie in Theorem 6.1.) argumentieren, dass es zum Zeitpunkt der Zuweisung von Job n eine Maschine gibt, deren Ausführungszeit unterhalb des Durchschnitts liegt, da wir Job n der Maschine mit der kleinsten Ausführungszeit zuweisen. Es gilt:
+$$C(\pi) = L_{i}(\pi) \le \tfrac{1}{m} ( \sum_{j=1}^{n-1} p_{j}) +p_{n} \le \textrm{OPT}(\sigma) + p_{n}$$
+
+Der Makespan von $\pi$ kann als nur größer als $\frac{4}{3}$ sein, wenn $p_{n} > \tfrac{1}{3} \textrm{OPT}(\sigma)$ ist, und damit, aufgrund der Sortierung der Jobs, alle Jobts $> \tfrac{1}{3} OPT(\sigma)$  sind.
+
+Im optimalen Schedule kann als jede Maschine nur höchstens 2 Jobs haben (Die Zuweisung ist: $j \in {1, ..., m}$ wir Maschine $j$ zugewiesen;  $j \in {m+1, ..., n}$ wird Maschine $2m - j + 1$ zugewiesen).
+
+Da auch LPT den aktuellen Job der Maschine mit der geringsten Ausführungszeit zuweist, inspricht dass genau der Zuweisung, die gerade beschrieben wurde. Es folgt ein induktives Argument, dass den Widerspruch zeit.
 
 \section{Maschinen mit Geschwindigkeiten}
 
-\textit{SlowFit($\alpha$)} Wird ein neuer Job j $\in$ J der Größe $p_{j}$ präsentiert, so weise ihn der langsamsten Maschiene i $\in$ M zu, die nach der Zuweisung von Job j eine Ausführungszeit von höchstens $2 \alpha$ hat. Fall es keine solche Maschiene gibt, gebe eine Fehlermeldung aus.
+\textit{SlowFit($\alpha$)} Wird ein neuer Job j $\in$ J der Größe $p_{j}$ präsentiert, so weise ihn der langsamsten Maschine i $\in$ M zu, die nach der Zuweisung von Job j eine Ausführungszeit von höchstens $2 \alpha$ hat. Fall es keine solche Maschine gibt, gebe eine Fehlermeldung aus.
 
 \textbf{Lemma 6.3.} Es sei $\alpha \in \mathbb{R}_{>0}$ beliebig und $\sigma$ sei eine beliebige Eingabe für Online-Scheduling mit $\textrm{OPT}(\sigma) \leq \alpha$. Dann gibt der Algorithmus $\textrm{SLOWFIT}(\alpha)$ auf der Eingabe $\alpha$ keine Fehlermeldung aus und berechnet einen Schedule $\pi$ mit $C(\pi) \leq 2 \alpha$.
 
 \textit{Beweis.} Da SlowFit, falls er keine Fehlermeldung ausgibt, immer ein Schedule $\pi$ mit $C(\pi) \le 2 \alpha$ berechnet, muss man nur zeigen, dass SlowFit keine Fehlermeldung ausgibt.\\
-Man kann sich überlegen, dass nicht alle Maschienen eine größere Ausführungszeit haben können, als das optimale Schedule. \\
-Wir betrachten die schnellste Maschiene f, für die gilt $L_{f}(\pi_{n-1}) \le OPT(\sigma)$. Es muss auf jedenfall gelten f $<$ schnellste Maschiene m; ansonsten würde der Algo keine Fehlermeldung ausgeben.\\
-Wir setzen $\Gamma = \{i \in M | i > f\}$ (also alle Maschienen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
-Die Gesamtgröße alle Jobs, die einer maschiene aus $\Gamma$ zugewiesen wurden, ist größer als $\sum_{i \in \gamma}(s_{i} \cdot OPT(\sigma))$. Daher muss es in einem optimalen Schedule einen Job aus $\gamma$ geben, der einer Maschiene i $\le$ f zugewiesen wird. Man hätte diesen Job als auch im schlimmsten Fall der Maschiene f zuweisen können, da $p_{j}/s_{f} \le OPT(\sigma)$ gilt und somit die Ausführungszeit der Maschiene f + die des neuen Jobs immernoch kleiner ist als 2 mal OPT($\sigma$) und somit $\le 2\alpha$. Daher gibt der Algorithmus keine Fehlermeldung aus.
+Man kann sich überlegen, dass nicht alle Maschinen eine größere Ausführungszeit haben können, als das optimale Schedule. \\
+Wir betrachten die schnellste Maschine f, für die gilt $L_{f}(\pi_{n-1}) \le OPT(\sigma)$. Es muss auf jedenfall gelten f $<$ schnellste Maschine m; ansonsten würde der Algo keine Fehlermeldung ausgeben.\\
+Wir setzen $\Gamma = \{i \in M | i > f\}$ (also alle Maschinen in $\Gamma$ haben eine größere Ausführungszeit als OPT($\sigma$)).\\
+Die Gesamtgröße alle Jobs, die einer Maschine aus $\Gamma$ zugewiesen wurden, ist größer als $\sum_{i \in \gamma}(s_{i} \cdot OPT(\sigma))$. Daher muss es in einem optimalen Schedule einen Job aus $\gamma$ geben, der einer Maschine i $\le$ f zugewiesen wird. Man hätte diesen Job als auch im schlimmsten Fall der Maschine f zuweisen können, da $p_{j}/s_{f} \le OPT(\sigma)$ gilt und somit die Ausführungszeit der Maschine f + die des neuen Jobs immernoch kleiner ist als 2 mal OPT($\sigma$) und somit $\le 2\alpha$. Daher gibt der Algorithmus keine Fehlermeldung aus.
 
 \textit{SlowFit (ohne $\alpha$ zu kennen:)}\\
 1.) Setze $\alpha_{0} = p_{1}/s_{m}$. \\
 2.) Beginne mit Phase k = 0. \\
 3.) Für jeden Job j = 1, ..., n führe folgende Anweisung durch: \\
-4.) Versuche, Job j mit SlowFit($\alpha_{k}$) einer Maschiene zuzuweisen. Ignoriere dabei alle Jobs, die in früheren Phasen zugewiesen wurden. \\
+4.) Versuche, Job j mit SlowFit($\alpha_{k}$) einer Maschine zuzuweisen. Ignoriere dabei alle Jobs, die in früheren Phasen zugewiesen wurden. \\
 5.) Gibt SlowFit($\alpha_{k}$) keine Fehlermeldung aus, so übernimm die Zuweisung. \\
 6.) Ansonsten erhöhe k um eins und setze $\alpha_{k} = 2^{k}\alpha_{0}$ und gehe zurück zu Schritt 4. \\
 

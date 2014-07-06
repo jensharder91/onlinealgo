@@ -2,7 +2,7 @@
 
 \section{Deterministische Algorithmen}
 
-\subsection{Markierungsalgorithmen:}
+\subsection{Markierungsalgorithmen}
 $\sigma = (\overbrace{1, 2, 4, 2, 1}^{Phase 1},\overbrace{3, 5, 2, 3, 5}^{Phase 2},\overbrace{1, 2, 3}^{Phase 3},\overbrace{4}^{Phase 4})$
 
 
@@ -62,11 +62,11 @@ Da LFD mind. so viele Fehler macht wie OPT gilt: $\omega_{A}$($\sigma$) = k + l 
 
 \subsection{Optimaler Offline-Algorithmus}
 
-\textbf{Theorem 2.6.} LFT ist ein opt. offline Algorithmus für das Paging-Problem
+\textbf{Theorem 2.6.} LFD ist ein optimaler offline Algorithmus für das Paging-Problem
 
 \textit{Beweis mit Lemma 2.7}:
 
-\textbf{Lemma 2.7.} Sei A ein bel. offline Algo, der sich auf Eingabe $\sigma$ anders Verhält als LFD uns sei $\sigma_{t}$ der erste Seitenzugriff, bei dem sich A und LFD unterscheiden. Dann ex. Algo B mit folgenden Eingenschaften:
+\textbf{Lemma 2.7.} Sei $A$ ein bel. offline Algo, der sich auf Eingabe $\sigma$ anders verhält als LFD uns sei $\sigma_{t}$ der erste Seitenzugriff, bei dem sich A und LFD unterscheiden. Dann ex. Algo B mit folgenden Eingenschaften:
 \begin{enumerate}
 \item B verhält sich auf $\sigma_{1}, ..., \sigma_{t - 1}$ genau wie A
 \item Bei $\sigma_{t}$ verdrängt B die Seite, bei der der mächste Zugriff am weitesten weg ist
@@ -80,13 +80,8 @@ $\omega_{LFD}(\sigma) = \omega_{A_{n}}(\sigma) \le \omega_{A_{n-1}}(\sigma) \le 
 \textit{Beweis Lemma 2.7:}\\
 Wir konstruieren nun Algo B: \\
 Auf der Sequent $\sigma_{1}, ..., \sigma_{t-1}$ verhalten sich die Algorithmen A und B gleich. bei $\sigma_{t}$ machen beide einen Seitenfehler, verdrängen aber unterschieldiche Seiten aus dem Cach.
-\\
-\\
-\\
+
 TODO: !!!Beweis Lemma 2.7!!!
-\\
-\\
-\\
 
 \subsection{Zusammenfassung der Ergebnisse}
 
