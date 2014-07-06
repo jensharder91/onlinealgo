@@ -1,12 +1,14 @@
 \chapter{Zusammenfassung der Algorithmen}
 
 \section{Paging}
-\begin{tabular}{|l|l|l|} \hline
-Abkürzung & Name & Beschreibung\\ \hline \hline
-LRU  & least-recently-used      & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
-FWF  & flush-when-full          & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
-FIFO & first-in-first-out       & kein Markierungsalgorithmus, dennoch $k$-kompetitiv \\ \hline
-LFU  & least-frequently-used    & nicht kompetitiv\\ \hline
-LIFO & last-in-first-out        & nicht kompetitiv\\ \hline
-LFD  & longest-forward-distance & optimaler Offline-Algorithmus \\ \hline
-\end{tabular}
+\begin{tabularx}{\textwidth}{|l|X|X|X|} \hline
+Kurzform & Name & Beschreibung & Laufzeit\\ \hline \hline
+LRU  & least-recently-used      & & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
+FWF  & flush-when-full          & & strikt $k$-kompetitiv da Markierungsalgorithmus \\ \hline
+FIFO & first-in-first-out       & & kein Markierungsalgorithmus, dennoch $k$-kompetitiv \\ \hline
+LFU  & least-frequently-used    & & nicht kompetitiv\\ \hline
+LIFO & last-in-first-out        & & nicht kompetitiv\\ \hline
+LFD  & longest-forward-distance & & optimaler Offline-Algorithmus \\ \hline
+RANDOM & RANDOM & Verdrängt eine beliebige Seite aus dem Cache & asdf\\ \hline
+MARK & & & \\ \hline
+\end{tabularx}
