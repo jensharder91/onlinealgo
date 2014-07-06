@@ -29,7 +29,4 @@ Threat($r$) & Drohungsalgorithmus & Tauscht immer genau so viel, dass er bis zum
 \begin{tabularx}{\textwidth}{|l|l|X|X|} \hline
 Kurzform & Name & Beschreibung & Kosten\\ \hline \hline
 RPA($\sqrt{\varphi}$) & Reservationspreisalgo & Kauft bei einem Preis unter $\sqrt(\varphi)$ so viel wie möglich, sonst so wenig wie möglich & $\sqrt{\varphi}$-kompetitiv \\ \hline
-EXPO & EXPO & Sei $\varphi = \frac{M}{m} = 2^k$. Wählt $i$ uniform zufällig aus $\{0,...,k-1\}$ und wendet $\textrm{RPA}(m2^i)$ an & strikt $(c(\varphi)\log\varphi)$-kompetitiv mit $c(\varphi) \leq 2 \xrightarrow{\varphi \rightarrow \infty} 1$ \\ \hline
-$\textrm{EXPO}_q$ & $\textrm{EXPO}_q$ & Sei $\varphi = \frac{M}{m} = 2^k$. Wählt $i$ zufällig nach $q$ aus $\{0,...,k-1\}$ und wendet $\textrm{RPA}(p_1\cdot2^i)$ an. Benötigt im Gegensatz zu EXPO keine Kenntniss über $[m,M]$ oder $\varphi$ & strikt $\frac{2}{q(\lfloor\log\varphi\rfloor)}$-kompetitiv \\ \hline
-Threat($r$) & Drohungsalgorithmus & Tauscht immer genau so viel, dass er bis zum aktuellen Schritt $r$-komopetitiv ist, sonst Fehler & strikt $r$-kompetitiv (falls kein Fehler) \\ \hline
 \end{tabularx}
