@@ -28,23 +28,30 @@ Um den konstanten Faktor $\tau$ zu entfernen, wiederholen wir dies beliebig oft,
 
 \textbf{Theorem 7.3.} Es gibt keine Konstante $r < 2$, für die der Algorithmus RANDOM r-kompetitiv ist.
 
-\textit{Beweis:}
+\textit{Beweis:} 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.4\textwidth]{7_3}
   \caption{Zuordnung der Knoten}
 \end{figure}
+$$E[|M|] = n + E[x] = n + \sum_{i=1}^{n} p_{i} $$
+$$E[X] = \sum_{i=1}^{n} \le \sum_{i=1}^{n} \frac{1}{n - i + 2} = ... \le ln(n) + 1$$
 
 \textit{RANKING (leichte Abwandlung von RANDOM):}
 
 \textbf{Theorem 7.4.} Der Algorithmus RANKING ist auf Graphen, in denen das maximale Matching die Größe n besitzt, strikt $\tfrac{1}{1-(1-\tfrac{1}{n+1})^{n}}$-kompetitiv.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Nicht relevant, haben wir in der Vorlesung übersprungen (glaub ich)
 
 \textbf{Lemma 7.5.} Es sei $\sigma$ eine beliebige Permutation der Menge V, x $\in V \cup V$ ein beliebiger Knoten und H der Graph, der aus G entsteht, indem der Knoten x und alle zu ihm inzidenten Kanten entfernt werden. Dann sind die Matchings M = RANKING(G, $\sigma$) und M' = RANKING(H, $\sigma_{x}$) entweder identisch oder sie unterscheiden sich um einen M-alternierenden Pfad P, der mindestens so viele Kanten aus M wie E \ M enthält. Dabei bezeichne $\sigma_{x}$ die Permutation, die $\sigma$ auf V \textbackslash \{x\} durch Löschen von x induziert (für x $\in$ U gilt $\sigma = \sigma_{x}$), und wir gehen davon aus, dass die Knoten aus U\textbackslash \{x\} in dem Graph H in derselben Reihenfolge ankommen wie in G.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{7_5}
+  \caption{Zuordnung der Knoten}
+\end{figure}
 
 \textbf{Lemma 7.6.} Es sei u $\in$ U beliebig und es sei v = $m^{*}(u)$. Falls der Knoten v in dem Matching M nicht zugewiesen ist, so ist u in M einen knoten zugewiesen, dessen Rang kleiner ist als der von v.
 
