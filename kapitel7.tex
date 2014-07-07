@@ -4,11 +4,23 @@
 
 \textbf{Theorem 7.1.} Jeder Greedy-Algorithmus, der nach dem oben beschriebenen Prinzip arbeitet, ist strikt 2-kompetitiv für das Online-Matching-Problem.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Jeder Greedy-Algorithmus berechnet einen nicht erweiterbares Matching, da er ansonsten die Kante, als sie durch die Eingabe möglich geworderden ist, als in das Matching mit einbezogen hätte (dies entsspricht der Eigenschaft von diesem Greedy-Algorithmus).
+
+Zum Beweis fehlen noch folgende Aussagen: ($M$ ist bel. nicht erweiterbares Matching; $M^{*}$ maximales Matching)
+\begin{itemize}
+\item $|M^{*}| \le 2|M|$ (jede Kante aus $M$ kann max 2 aus $M^{*}$ verdrängen)
+\item $|V(M)| = 2|M|$
+\item $|V(M^{*}| = 2|M^{*}|)$
+\item $|V(M)| \ge |M^{*}|$
+\end{itemize}
+Daraus folgt: $$|M| = \frac{|V(M)|}{2} \ge \frac{|M^{*}}{2}$$
 
 \textbf{Theorem 7.2.} Es gibt keinen deterministischen Online-Algorithmus für das Online-Matching-Problem, der einen besseren kompetitiven Faktor als 2 erreicht.
 
-\textit{Beweis:} !!!!!TODO!!!!!
+\textit{Beweis:} Gegenbeispiel:\\
+Wir haben $v_{1}, v_{2}$ gegeben. Wenn Knoten $u_{1}$ aufgedeckt wird und diese Kanten jeweils zu $v_{1}$ und $v_{2}$ wird der Algorithmus eine der beiden Kanten zum Matching hinzufügen. Dieses Verhalten kann leicht ausgetrickst werden, indem $u_{2}$ nur zu dem Knoten eine Kante hat, der bereits dem Matching angehört. Das maximale Matching wäre in dem Fall 2, der deterministische Algorithmus bekommt aber nur 1.
+
+Um den konstanten Faktor $\tau$ zu entfernen, wiederholen wir dies beliebig oft, sodass $\tau$ keine Rolle mehr spielt.
 
 \section{Randomisierte Algorithmen}
 
