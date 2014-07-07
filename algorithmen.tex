@@ -50,10 +50,19 @@ RPA($\sqrt{\varphi}$) & Reservationspreisalgo & Kauft bei einem Preis unter $\sq
 \end{tabularx}
 
 
+\section{Scheduling}
+\begin{tabularx}{\textwidth}{|l|X|X|} \hline
+Name & Beschreibung & Laufzeit\\ \hline \hline
+Least-Loaded & Ordnet einen neuen Job der Maschine mit der kleinsten Ausführungszeit zu & strikt $(2-1/m)$-kompetitiv mit $m =$ Anzahl der Maschinen\\ \hline
+Longest-Processing-Time (Offline!) & Sortiere Jobs absteigend nach ihrer Dauer, dann Least-Loaded & $4/3$-Approximationsalgorithmus\\ \hline
+Slow-Fit($\alpha$) & Ordne einen neuen Job der langsamsten Maschine zu, die nach der Zuordnung noch eine Ausführungszeit $\leq 2\alpha$ hat & $2\alpha$-kompetitiv, keine Fehlermeldung für $\alpha \geq \textrm{OPT}(\sigma)$, \textbf{Problem:} $\textrm{OPT}(\sigma)$ ist nicht bekannt \\ \hline
+Slow-Fit($\alpha_k$) & Ordne einen neuen Job der langsamsten Maschine zu, die nach der Zuordnung noch eine Ausführungszeit $\leq 2\alpha$ hat, ansontent verdoppele $\alpha$ & strikt 8-kompetitiv \\ \hline
+\end{tabularx}
 
-\section{..}
-\begin{tabularx}{\textwidth}{|l|X|X|X|} \hline
+\section{Das Online-Matching-Problem}
+\begin{tabularx}{\textwidth}{|l|l|X|X|} \hline
 Kurzform & Name & Beschreibung & Laufzeit\\ \hline \hline
-  &  &  &  \\ \hline
-  &  &  &  \\ \hline
+GREEDY & GREEDY & Matched einen neuen Knoten mit einem beliebigen (nicht zufälligen) adjazenten Knoten aus $V$ & 2-kompetitiv \\ \hline
+RANDOM & RANDOM & Matched einen neuen Knoten mit einem zufällig ausgewählten adjazenten Knoten aus $V$ & 2-kompetitiv \\ \hline
+RANKING & RANKING & Wählt eine zufällige Permutation der Knotenmenge $V$ und matched dann zu dem ersten adjazenten Knoten $v_i$ in der Permutation & etwa strikt 1,58-kompetitiv \\ \hline
 \end{tabularx}
