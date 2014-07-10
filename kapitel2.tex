@@ -39,7 +39,7 @@ Also: $\omega_{A}(\sigma) \le l \cdot k \le (k + l - 2) \cdot k \le \textrm{OPT}
 \textbf{Theorem 2.4.} LFU und LIFO sind nicht kompetitiv
 \textit{Beweis:} Gebe Gegenbeispiel an:
 
-$\sigma = \left(1^l, 1^l, ..., (k-1)^l, (k, k+1)^l\right)$\\
+$\sigma = \left(1^l, 2^l, ..., (k-1)^l, (k, k+1)^{l-1}\right)$\\
 $\Rightarrow k - 1 + 2(l - 1)$ Seitenfehler
 
 \begin{align*}
@@ -49,12 +49,14 @@ $\Rightarrow k - 1 + 2(l - 1)$ Seitenfehler
 
 
 
-\textbf{Theorem 2.5.} Es gibt für kein $r < k$ einen deterministischen $r$-kompetitiven online Algorithmus für das Paging-Problem
+\textbf{Theorem 2.5.} Es gibt für kein $r<k$ einen deterministischen $r$-kompetitiven Online-Algorithmus für das Paging-Problem
 
-\textit{Beweis:} Konstruiere Eingabe für bel. online Algo A: $\sigma_{1}$, $\sigma_{2}$, ..., $\sigma_{k}$: k verschiedene Seitem. Also hat sowohl A als auch opt. offline Algo k Seitenfehler.\\
-Für $\sigma_{k + 1}$, ..., $\sigma_{k + l}$ gilt: Es kommt immer die Seite, die A vorher aus dem Cach geschmissen hat. Also macht A hier k + l Seitenfehler; LFD hat nur $\omega_{LFD}$($\sigma$) $\le$ k + 1 + $\tfrac{l}{k}$ Seitenfehler. \\
-Da LFD mind. so viele Fehler macht wie OPT gilt: $\omega_{A}$($\sigma$) = k + l $>$ r $\cdot$ ( k + 1 + $\tfrac{l}{k}$) + $\tau$ $\ge$ r $\cdot$ $\omega_{LFO}$($\sigma$) + $\tau$ \\
- $\Rightarrow$  $\omega_{A}$($\sigma$) $>$ r $\cdot$ OPT($\sigma$) $\cot$ r
+\textit{Beweis:} Konstruiere Eingabe für bel. online Algo $A$: $\sigma_{1}, \sigma_{2}, ..., \sigma_{k}$: $k$ verschiedene Seitem. Also hat sowohl $A$ als auch opt. offline Algo $k$ Seitenfehler.
+
+Für $\sigma_{k + 1}, ..., \sigma_{k + l}$ gilt: Es kommt immer die Seite, die $A$ vorher aus dem Cach geschmissen hat. Also macht $A$ insgesamt $k + l$ Seitenfehler; LFD hat nur $\omega_{LFD}(\sigma) \le k + 1 + \frac{l}{k}$ Seitenfehler.
+
+Da LFD mind. so viele Fehler macht wie OPT gilt: $$\omega_{A}(\sigma) = k + l > r \cdot ( k + 1 + \frac{l}{k}) + \tau \ge r \cdot \omega_{LFD}(\sigma) + \tau$$
+$\Rightarrow \omega_{A}(\sigma) > r \cdot OPT(\sigma) + \tau$
 
 
 \subsection{Untere Schranken}
